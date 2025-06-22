@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRAND JEANNOT EXPRESS - VIP Intercity Transport🇨🇲</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, #F56A00, #e55a00);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000; /* Highest z-index for the navbar */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            height: 64px; /* Explicit height for easy calculation */
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%; /* Ensure content fills navbar height */
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-menu a:hover {
+            opacity: 0.8;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* MCnoval Marquee specific CSS */
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .mcnoval-marquee-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            box-sizing: border-box;
+            background: linear-gradient(90deg, #2BAE66, #F56A00); /* Use website's theme colors */
+            color: white;
+            padding: 0.75rem 0; /* Vertical padding for the text itself */
+            position: fixed; /* Make it fixed so it stays when scrolling */
+            top: 64px; /* Position it exactly below the 64px tall navbar */
+            z-index: 990; /* Below navbar, above hero section */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Subtle shadow */
+            height: 45px; /* Explicit height for easy calculation */
+        }
+
+        .mcnoval-marquee-content {
+            display: inline-block;
+            animation: scroll-left 60s linear infinite; /* Animation duration - SLOWER for desktop */
+            padding-left: 100%; /* Start off-screen */
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Adjust animation speed for different screen sizes */
+        @media (max-width: 768px) {
+            .mcnoval-marquee-content {
+                animation-duration: 90s; /* Slower on smaller screens - SLOWER for mobile */
+                font-size: 0.95rem;
+            }
+        }
+        /* End of MCnoval Marquee specific CSS */
+
+        /* Hero Section */
+        .hero {
+            /* Adjust margin-top to account for both fixed navbar (64px) and fixed marquee (45px) */
+            margin-top: calc(64px + 45px); /* Total fixed header height */
+            background: linear-gradient(rgba(245, 106, 0, 0.8), rgba(229, 90, 0, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f0f0" width="1200" height="600"/><rect fill="%23F56A00" x="0" y="200" width="1200" height="200" opacity="0.1"/><text x="600" y="320" text-anchor="middle" font-size="48" fill="%23666">Luxury Bus Interior</text></svg>');
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            background-size: cover;
+            background-position: center;
+        }
+        /* Further styling for Hero (existing) */
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #2BAE66;
+            color: white;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #F56A00;
+        }
+
+        /* About Section */
+        .about {
+            background: #f8f9fa;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            color: #F56A00;
+            margin-bottom: 1rem;
+        }
+
+        /* Destinations */
+        .destinations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .destination-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .destination-header {
+            background: linear-gradient(135deg, #F56A00, #2BAE66);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .destination-body {
+            padding: 1.5rem;
+        }
+
+        .phone-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            font-weight: bold;
+            color: #F56A00;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .phone-number:hover {
+            background: #e9ecef;
+        }
+
+        .coming-soon {
+            opacity: 0.7;
+            position: relative;
+        }
+
+        .coming-soon::after {
+            content: "🚧 Coming Soon";
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #ffc107;
+            color: #333;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        /* Services */
+        .services {
+            background: #f8f9fa;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: #F56A00;
+            margin-bottom: 1rem;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            height: 200px;
+            background: linear-gradient(135deg, #F56A00, #2BAE66);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Contact */
+        .contact {
+            background: #f8f9fa;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #F56A00;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        /* Styling for WhatsApp icons */
+        .whatsapp-icon-link {
+            display: flex; /* Make it a flex container to align icon and text */
+            align-items: center;
+            justify-content: center; /* Center horizontally */
+            gap: 0.5rem; /* Space between icon and text */
+            background: #25D366; /* WhatsApp green */
+            color: white; /* White icon color */
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            width: fit-content; /* Adjust width to content */
+            margin-left: auto; /* Center link in contact-item if it's a block */
+            margin-right: auto;
+        }
+
+        .whatsapp-icon-link:hover {
+            background: #1DA851; /* Darker green on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+        }
+
+        .whatsapp-icon-link i {
+            font-size: 1.8rem; /* Larger icon size */
+            color: white; /* Ensure icon color remains white */
+            margin: 0; /* Remove default margin from original contact-item i */
+        }
+        /* End of WhatsApp icon styling */
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #F56A00;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #F56A00;
+        }
+
+        /* Chatbot Widget */
+        .chatbot-widget { 
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px; 
+            z-index: 1000; 
+        }
+        .chatbot-toggle {
+            width: 60px; 
+            height: 60px; 
+            background: #F56A00; 
+            border: none; 
+            border-radius: 50%;
+            color: white; 
+            font-size: 1.5rem; 
+            cursor: pointer; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+        .chatbot-window {
+            position: absolute; 
+            bottom: 80px; 
+            right: 0; 
+            width: 350px; 
+            height: 500px;
+            background: white; 
+            border-radius: 15px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            display: none; 
+            flex-direction: column; 
+            overflow: hidden;
+        }
+        .chatbot-header {
+            background: linear-gradient(135deg, #F56A00, #2BAE66); 
+            color: white;
+            padding: 1rem; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+        }
+        .chatbot-close { 
+            background: none; 
+            border: none; 
+            color: white; 
+            font-size: 1.2rem; 
+            cursor: pointer; 
+        }
+        .chatbot-messages {
+            flex: 1; 
+            padding: 1rem; 
+            overflow-y: auto; 
+            background: #f8f9fa;
+        }
+        .chatbot-input {
+            padding: 1rem; 
+            border-top: 1px solid #ddd; 
+            display: flex; 
+            gap: 0.5rem;
+        }
+        .chatbot-input input {
+            flex: 1; 
+            padding: 0.5rem; 
+            border: 1px solid #ccc; 
+            border-radius: 20px;
+        }
+        .chatbot-send {
+            background: #F56A00; 
+            color: white; 
+            border: none; 
+            border-radius: 50%; 
+            width: 40px; 
+            height: 40px;
+            cursor: pointer;
+        }
+        .message {
+            margin-bottom: 1rem; 
+            padding: 0.8rem; 
+            border-radius: 10px; 
+            max-width: 80%;
+        }
+        .message.bot {
+            background: white; 
+            margin-right: auto; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .message.user {
+            background: #F56A00; 
+            color: white; 
+            margin-left: auto;
+        }
+        /* Quick questions and quick question CSS are removed as they are no longer used */
+        .typing-indicator {
+            font-style: italic;
+            color: #999;
+            margin-bottom: 1rem;
+            animation: blink 1s infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chatbot-window {
+                width: 300px;
+                height: 400px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            /* Adjust hero margin for mobile */
+            .hero {
+                /* On mobile, navbar is 64px, marquee is 45px. Total 109px */
+                margin-top: calc(64px + 45px); /* Ensure it's below both fixed elements */
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animations */
+        @keyframes blink {
+            0%, 100% { opacity: 0.2; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">GRAND JEANNOT EXPRESS</div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#destinations">Destinations</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MCnoval Scrolling Announcement - Placed directly after Navbar -->
+    <div class="mcnoval-marquee-container">
+        <p class="mcnoval-marquee-content">
+            Transform Your Business with MCnoval! Ready to boost efficiency and delight your customers? At MCnoval, we offer expert services in mobile app development, AI automation, responsive website design, and customer service AI. Let's build innovative solutions that drive growth for your business and we make the product ready before payment is done ,and no matter how small ur budget is we will always work things our . Contact us today for a consultation! 677694072.
+        </p>
+    </div>
+    <!-- End of MCnoval Scrolling Announcement -->
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>GRAND JEANNOT EXPRESS</h1>
+            <p>Travel Cameroon in Style — VIP Comfort, Affordable Prices!</p>
+            <div class="cta-buttons">
+                <a href="#destinations" class="btn btn-primary">Book Now</a>
+                <a href="#destinations" class="btn btn-secondary">Explore Routes</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">About GRAND JEANNOT EXPRESS</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Affordable VIP Intercity Travel for All Cameroonians</h3>
+                    <p>GRAND JEANNOT EXPRESS is Cameroon's leading VIP intercity transport service, dedicated to providing comfortable, safe, and affordable travel experiences across the nation. Our mission is to connect Cameroonians with modern, luxury transportation that doesn't break the bank.</p>
+                    <p>We believe that every Cameroonian deserves to travel in comfort and style. That's why we've invested in modern VIP buses equipped with the latest amenities, ensuring your journey is as enjoyable as your destination.</p>
+                </div>
+                <div class="about-features">
+                    <div class="feature-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <h4>Safety First</h4>
+                        <p>Professional drivers and maintained vehicles</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-couch"></i>
+                        <h4>VIP Comfort</h4>
+                        <p>Reclining seats and spacious interiors</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-dollar-sign"></i>
+                        <h4>Affordable</h4>
+                        <p>Luxury travel at budget-friendly prices</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <h4>Nationwide</h4>
+                        <p>Expanding routes across Cameroon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="destinations" class="section">
+        <div class="container">
+            <h2 class="section-title">Our Destinations & Terminals</h2>
+            <div class="destinations-grid">
+                <div class="destination-card">
+                    <div class="destination-header">
+                        <h3><i class="fas fa-map-marker-alt"></i> Bamenda</h3>
+                        <p>Sonac Street (Opp. Sorepco)</p>
+                    </div>
+                    <div class="destination-body">
+                        <p>Experience the beauty of the Northwest region with our comfortable VIP service to Bamenda.</p>
+                        <a href="https://wa.me/237682985201" target="_blank" class="phone-number">
+                            <i class="fas fa-phone"></i> 682 985 201
+                        </a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-header">
+                        <h3><i class="fas fa-map-marker-alt"></i> Buea</h3>
+                        <p>Mile 17 Park</p>
+                    </div>
+                    <div class="destination-body">
+                        <p>Travel to the foot of Mount Cameroon in style and comfort with our Buea service.</p>
+                        <a href="https://wa.me/237682897868" target="_blank" class="phone-number">
+                            <i class="fas fa-phone"></i> 682 897 868
+                        </a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-header">
+                        <h3><i class="fas fa-map-marker-alt"></i> Limbe</h3>
+                        <p>Mile 4 Park</p>
+                    </div>
+                    <div class="destination-body">
+                        <p>Enjoy the coastal breeze and beaches of Limbe with our convenient transport service.</p>
+                        <a href="https://wa.me/237682407129" target="_blank" class="phone-number">
+                            <i class="fas fa-phone"></i> 682 407 129
+                        </a>
+                    </div>
+                </div>
+                <div class="destination-card">
+                    <div class="destination-header">
+                        <h3><i class="fas fa-map-marker-alt"></i> Douala</h3>
+                        <p>Bonaberi Terminal</p>
+                    </div>
+                    <div class="destination-body">
+                        <p>Connect to Cameroon's economic capital with our reliable Douala service.</p>
+                        <a href="https://wa.me/237680661949" target="_blank" class="phone-number">
+                            <i class="fas fa-phone"></i> 680661949
+                        </a>
+                    </div>
+                </div>
+                <div class="destination-card coming-soon">
+                    <div class="destination-header">
+                        <h3><i class="fas fa-map-marker-alt"></i> Bafoussam</h3>
+                        <p>Location TBD</p>
+                    </div>
+                    <div class="destination-body">
+                        <p>We're expanding our network to serve the West region. Stay tuned for updates!</p>
+                        <div class="phone-number" style="background: #f8f9fa; color: #666;">
+                            <i class="fas fa-clock"></i> Coming Soon
+                        </div>
+                    </div>
+                </div>
+                <div class="destination-card coming-soon">
+                    <div class="destination-header">
+                        <h3><i class="fas fa-map-marker-alt"></i> Yaoundé</h3>
+                        <p>Location TBD</p>
+                    </div>
+                    <div class="destination-body">
+                        <p>Our capital city service is in development. Exciting updates coming soon!</p>
+                        <div class="phone-number" style="background: #f8f9fa; color: #666;">
+                            <i class="fas fa-clock"></i> Coming Soon
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section services">
+        <div class="container">
+            <h2 class="section-title">Our VIP Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-couch"></i>
+                    <h3>VIP Reclining Seats</h3>
+                    <p>Spacious, comfortable seats that recline for your relaxation during long journeys.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-snowflake"></i>
+                    <h3>Full Air Conditioning</h3>
+                    <p>Stay cool and comfortable with our modern air conditioning systems in all buses.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-tv"></i>
+                    <h3>Entertainment Systems</h3>
+                    <p>Enjoy movies, music, and TV shows during your journey with our onboard entertainment.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-suitcase"></i>
+                    <h3>Luggage Safety</h3>
+                    <p>Secure storage for your belongings with our supervised luggage compartments.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Affordable Pricing</h3>
+                    <p>Luxury travel at prices that won't strain your budget - VIP comfort for everyone.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Professional Drivers</h3>
+                    <p>Experienced, licensed drivers committed to your safety and comfort on every trip.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="section-title">Experience Our Fleet</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    
+                   <img src="images/c.jpg" alt="Experience Our Fleet">
+    </div>
+                        
+                                    <div class="gallery-item">
+                    <div>
+                        <i class="fas fa-couch" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <br>Luxury Interior
+						<img src="images/c.jpg" alt="Fleet Image">
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div>
+                        <i class="fas fa-users" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <br>Happy Passengers
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div>
+                        <i class="fas fa-building" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <br>Modern Terminals
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div>
+                        <i class="fas fa-tv" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <br>Entertainment System
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <div>
+                        <i class="fas fa-route" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <br>Scenic Routes
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <h3>Send us a Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <h3>Contact Our Terminals via WhatsApp</h3>
+                    <div class="contact-item">
+                        <p>Bamenda Terminal:</p>
+                        <a href="https://wa.me/237682985201" target="_blank" aria-label="WhatsApp Bamenda" class="whatsapp-icon-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <p>Buea Terminal:</p>
+                        <a href="https://wa.me/237682897868" target="_blank" aria-label="WhatsApp Buea" class="whatsapp-icon-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <p>Limbe Terminal:</p>
+                        <a href="https://wa.me/237682407129" target="_blank" aria-label="WhatsApp Limbe" class="whatsapp-icon-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <p>Douala Terminal:</p>
+                        <a href="https://wa.me/237683239805" target="_blank" aria-label="WhatsApp Douala" class="whatsapp-icon-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-section about-us">
+                <h3>About Us</h3>
+                <p>GRAND JEANNOT EXPRESS offers VIP intercity transport services across Cameroon, prioritizing comfort, safety, and affordability for all our passengers.</p>
+            </div>
+            <div class="footer-section quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#destinations">Destinations</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section social-media">
+                <h3>Follow Us</h3>
+                <div class="social-icons" style="display: flex; gap: 1rem; justify-content: center; margin-top: 1rem;">
+                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" style="color: white; font-size: 1.5rem;"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="container copyright">
+            <p>&copy; 2025 GRAND JEANNOT EXPRESS. All Rights Reserved.</p>
+			<p>Developed by :MCLEWIS ANYAM</p>
+		
+        </div>
+    </footer>
+
+    <div class="chatbot-widget">
+        <button class="chatbot-toggle" id="chatbotToggle">
+            <i class="fas fa-comments"></i>
+        </button>
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <h3>Grand Assistant</h3>
+                <button class="chatbot-close" id="chatbotClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatInput" placeholder="Type your message...">
+                <button class="chatbot-send" id="chatSend">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const chatbotToggle = document.getElementById('chatbotToggle');
+            const chatbotWindow = document.getElementById('chatbotWindow');
+            const chatbotClose = document.getElementById('chatbotClose');
+            const chatbotMessages = document.getElementById('chatbotMessages');
+            const chatInput = document.getElementById('chatInput');
+            const chatSend = document.getElementById('chatSend');
+
+            chatbotToggle.addEventListener('click', () => {
+                chatbotWindow.style.display = chatbotWindow.style.display === 'flex' ? 'none' : 'flex';
+                if (chatbotWindow.style.display === 'flex') {
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                    chatInput.focus();
+                }
+                resetInactivityTimer(); // Reset timer on chatbot toggle
+            });
+
+            chatbotClose.addEventListener('click', () => {
+                chatbotWindow.style.display = 'none';
+                resetInactivityTimer(); // Reset timer on chatbot close
+            });
+
+            chatSend.addEventListener('click', () => {
+                sendMessage();
+            });
+
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            function sendMessage() {
+                const message = chatInput.value.trim();
+                if (message) {
+                    addUserMessage(message);
+                    chatInput.value = '';
+                    assistant.processMessage(message);
+                }
+                resetInactivityTimer(); // Reset timer on sending message
+            }
+
+            function addUserMessage(text) {
+                const msg = document.createElement('div');
+                msg.className = 'message user';
+                msg.innerText = text;
+                chatbotMessages.appendChild(msg);
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+
+            class GrandAssistant {
+                constructor() {
+                    this.responses = {
+                        'hello': {
+                            keywords: ["hello", "hi", "hey", "hola", "bonjour", "greetings"],
+                            get text() {
+                                const hour = new Date().getHours();
+                                let greeting = "Hello";
+                                if (hour < 12) greeting = "Good morning";
+                                else if (hour < 18) greeting = "Good afternoon";
+                                else greeting = "Good evening";
+                                return `👋 ${greeting} there, future traveler! I'm your GRAND ASSISTANT, ready to make your journey smoother. `;
+                            },
+                            followUp: ['prices', 'terminals', 'services', 'booking']
+                        },
+                        'prices': {
+                            keywords: ["prices", "cost", "fare", "how much", "ticket price", "rates", "fees"],
+                            text: "Our ticket prices vary depending on your destination. For specific pricing, please visit our 'Destinations' section on the website or call our contact numbers associated with each terminal. ",
+                            followUp: ['booking', 'destinations', 'contact']
+                        },
+                        'terminals': {
+                            keywords: ["terminals", "locations", "where are you", "address", "find you", "office", "parks"],
+                            text: "We have terminals in major cities like Bamenda (Sonac Street), Buea (Mile 17 Park), Limbe (Mile 4 Park), and Douala (Bonaberi Terminal). You can find more details on our 'Destinations' section. ",
+                            followUp: ['destinations', 'services', 'contact']
+                        },
+                        'services': {
+                            keywords: ["services", "what do you offer", "amenities", "features", "comfort", "vip", "facilities"],
+                            text: "We offer VIP reclining seats, full air conditioning, onboard entertainment systems, and professional drivers. Your comfort and safety are our top priorities! ",
+                            followUp: ['luggage', 'booking', 'prices']
+                        },
+                        'booking': {
+                            keywords: ["booking", "how to book", "reserve", "buy ticket", "make a reservation", "schedule", "tickets"],
+                            text: "You can book your journey directly at any of our terminals. Soon, we'll also have online booking available for your convenience! ",
+                            followUp: ['prices', 'terminals', 'contact']
+                        },
+                        'luggage': {
+                            keywords: ["luggage", "baggage", "bag", "suitcases", "policy", "bags"],
+                            text: "Each passenger is allowed a reasonable amount of luggage. For oversized or extra baggage, please inquire at the terminal. We ensure secure storage of your belongings. ",
+                            followUp: ['services', 'prices']
+                        },
+                        'joke': {
+                            keywords: ["joke", "funny", "tell me a joke", "laugh"],
+                            text: "Why did the bus stop at the art gallery? Because it wanted to pick up some *express-ions*! 😂 Hope that brought a smile to your face. ",
+                            followUp: ['prices', 'services']
+                        },
+                        'contact': {
+                            keywords: ["contact", "phone", "email", "call us", "get in touch", "reach us", "hours"],
+                            get text() {
+                                const now = new Date();
+                                const hour = now.getHours();
+                                let status = "";
+
+                                // Operating hours: Mon-Sun: 7:00 AM - 9:00 PM (21:00)
+                                if (hour >= 7 && hour < 21) {
+                                    status = "We are currently **OPEN**! 🎉";
+                                } else {
+                                    status = "We are currently **CLOSED**. Our working hours are Mon-Sun: 7:00 AM - 9:00 PM.";
+                                }
+                                return `You can reach our terminals via WhatsApp for quick assistance! Find the links below. ${status} `;
+                            },
+                            followUp: ['terminals', 'booking']
+                        },
+                        'destinations': {
+                            keywords: ["destinations", "routes", "where do you go", "cities", "locations"],
+                            text: "We currently serve Bamenda, Buea, Limbe, and Douala. Bafoussam and Yaoundé routes are coming soon! Check our 'Destinations' section for more details. ",
+                            followUp: ['prices', 'terminals']
+                        },
+                        'ceo': {
+                            keywords: ["ceo", "director", "founder", "Mr. Penn Junior", "Penn Junior", "who is the ceo"],
+                            text: "Meet **Mr. Penn Junior**, the visionary CEO and founder of GRAND JEANNOT EXPRESS! 🌟 Mr. Penn Junior is a dynamic leader dedicated to revolutionizing intercity transport in Cameroon. His commitment to providing unparalleled VIP comfort, safety, and affordability for every passenger drives our mission to connect communities across the nation. He is passionate about enhancing the travel experience and ensuring Grand Jeannot Express remains a symbol of excellence and reliability. ",
+                            followUp: ['about', 'services']
+                        },
+                        // New generic follow-up response for contextual awareness
+                        'generic_followup': {
+                            keywords: ["tell me more", "elaborate", "more info", "what about that", "can you explain", "details"],
+                            // Text dynamically generated in processMessage
+                            text: "I need more context for that. Could you please specify what you'd like to know more about?", // Fallback text
+                            followUp: ['prices', 'terminals', 'services', 'booking'] // Default follow-ups
+                        },
+                        'default': {
+                            text: "🤔 My apologies, I'm still learning! It seems I didn't quite understand that. Could you please rephrase your question or ask me about popular topics like: <strong>ticket prices</strong>, <strong>terminal addresses</strong>, our amazing <strong>VIP services</strong>, or <strong>how to book</strong> your journey? I'm here to help! ",
+                            followUp: ['prices', 'terminals', 'services', 'booking']
+                        }
+                    };
+                    this.lastTopic = null; // Initialize last topic for contextual awareness.
+                }
+
+                init() {
+                    // Initial bot message
+                    this.addBotResponse(this.responses['hello'], 'hello'); // Pass 'hello' as the initial topic
+                }
+
+                addBotResponse(response, responseKey = null) {
+                    const typingIndicator = document.createElement('div');
+                    typingIndicator.className = 'typing-indicator';
+                    typingIndicator.innerText = 'Grand Assistant is typing...';
+                    chatbotMessages.appendChild(typingIndicator);
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+                    setTimeout(() => {
+                        chatbotMessages.removeChild(typingIndicator);
+                        const msg = document.createElement('div');
+                        msg.className = 'message bot';
+                        
+                        let html = response.text;
+                        
+                        // Add textual follow-up suggestions
+                        if (response.followUp && response.followUp.length > 0) {
+                            const displayMap = {
+                                'prices': 'ticket prices',
+                                'terminals': 'terminal locations',
+                                'services': 'our services',
+                                'booking': 'how to book',
+                                'luggage': 'luggage policy',
+                                'joke': 'a joke',
+                                'contact': 'contact information',
+                                'destinations': 'our destinations',
+                                'about': 'about Grand Jeannot Express'
+                            };
+                            const suggestedQuestions = response.followUp.map(key => {
+                                return `<strong>${displayMap[key] || key}</strong>`;
+                            }).join(', ');
+                            html += `<p style="font-size: 0.9em; margin-top: 10px; color: #555;">You can also ask about: ${suggestedQuestions}.</p>`;
+                        }
+                        
+                        msg.innerHTML = html;
+                        chatbotMessages.appendChild(msg);
+                        chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+
+                        // Update lastTopic after a response has been displayed
+                        if (responseKey && responseKey !== 'proactive_nudge' && responseKey !== 'default') { // Do not set lastTopic for proactive nudges or default responses
+                            this.lastTopic = responseKey;
+                        } else if (responseKey === 'default') {
+                            this.lastTopic = null; // Clear last topic if we hit default
+                        }
+
+                    }, 800);
+                }
+
+                processMessage(message) {
+                    const lowerCaseMessage = message.toLowerCase();
+                    let matchedResponse = this.responses['default'];
+                    let matchedKey = 'default';
+
+                    // 1. Check for generic follow-up if lastTopic is set
+                    if (this.lastTopic && this.responses['generic_followup'].keywords.some(keyword => lowerCaseMessage.includes(keyword))) {
+                        // Try to provide more details based on lastTopic
+                        switch (this.lastTopic) {
+                            case 'prices':
+                                matchedResponse = {
+                                    text: "You recently asked about prices. To get specific pricing, please visit our 'Destinations' section or call the numbers listed for each terminal. ",
+                                    followUp: ['destinations', 'contact']
+                                };
+                                matchedKey = 'prices';
+                                break;
+                            case 'terminals':
+                                matchedResponse = {
+                                    text: "You recently asked about our terminals. We have locations in Bamenda (Sonac Street), Buea (Mile 17 Park), Limbe (Mile 4 Park), and Douala (Bonaberi Terminal). More details are on our 'Destinations' section. ",
+                                    followUp: ['destinations', 'contact']
+                                };
+                                matchedKey = 'terminals';
+                                break;
+                            case 'services':
+                                matchedResponse = {
+                                    text: "You recently asked about our services. We offer VIP reclining seats, full air conditioning, onboard entertainment, secure luggage, and professional drivers. Is there a specific service you'd like to know more about? ",
+                                    followUp: ['luggage']
+                                };
+                                matchedKey = 'services';
+                                break;
+                            case 'booking':
+                                matchedResponse = {
+                                    text: "You recently asked about booking. Currently, you can book directly at any of our terminals. Online booking will be available soon! ",
+                                    followUp: ['prices', 'terminals']
+                                };
+                                matchedKey = 'booking';
+                                break;
+                            case 'luggage':
+                                matchedResponse = {
+                                    text: "You recently asked about luggage. Each passenger is allowed a reasonable amount of luggage. For oversized items, please inquire at the terminal. ",
+                                    followUp: ['services']
+                                };
+                                matchedKey = 'luggage';
+                                break;
+                            case 'contact':
+                                matchedResponse = {
+                                    text: "You recently asked about contact information. You can find WhatsApp links for our terminals in the 'Contact Us' section. We are here to help! ",
+                                    followUp: ['terminals']
+                                };
+                                matchedKey = 'contact';
+                                break;
+                            case 'destinations':
+                                matchedResponse = {
+                                    text: "You recently asked about destinations. We serve Bamenda, Buea, Limbe, and Douala, with Bafoussam and Yaoundé coming soon. Which destination are you interested in? ",
+                                    followUp: ['prices', 'terminals']
+                                };
+                                matchedKey = 'destinations';
+                                break;
+                            case 'ceo':
+                                matchedResponse = {
+                                    text: "You recently asked about our CEO. Mr. Penn Junior is our visionary founder, committed to comfort, safety, and affordability in intercity transport. Is there something specific you'd like to know about him or our leadership? ",
+                                    followUp: ['about']
+                                };
+                                matchedKey = 'ceo';
+                                break;
+                            default:
+                                // Fallback to generic if lastTopic is not specifically handled for 'generic_followup'
+                                matchedResponse = this.responses['generic_followup'];
+                                matchedKey = 'generic_followup';
+                                break;
+                        }
+                        this.addBotResponse(matchedResponse, matchedKey); // Send contextual response
+                        return; // Exit as we've handled the message contextually
+                    }
+
+                    // 2. Normal keyword matching (more specific first)
+                    for (const key in this.responses) {
+                        const response = this.responses[key];
+                        // Skip generic_followup here, it's handled by context logic above
+                        if (key === 'generic_followup') continue;
+                        // Prioritize more specific keywords by placing them earlier in the `responses` object, or by more explicit checks if needed
+                        
+                        if (response.keywords && response.keywords.some(keyword => lowerCaseMessage.includes(keyword))) {
+                            matchedResponse = response;
+                            matchedKey = key;
+                            break;
+                        }
+                    }
+
+                    this.addBotResponse(matchedResponse, matchedKey);
+                }
+            }
+
+            // Initialize chatbot
+            const assistant = new GrandAssistant();
+            assistant.init();
+
+            // Inactivity timer logic (outside GrandAssistant class)
+            let inactivityTimer;
+            const INACTIVITY_TIMEOUT = 60 * 1000; // 60 seconds
+
+            function resetInactivityTimer() {
+                clearTimeout(inactivityTimer);
+                inactivityTimer = setTimeout(() => {
+                    // Only send nudge if chatbot is open and input is empty
+                    if (chatbotWindow.style.display === 'flex' && chatInput.value === '') {
+                        assistant.addBotResponse({
+                            text: "Are you still there? I'm here to help if you have more questions about GRAND JEANNOT EXPRESS! ",
+                            followUp: ['prices', 'services', 'contact']
+                        }, 'proactive_nudge');
+                    }
+                }, INACTIVITY_TIMEOUT);
+            }
+
+            // Listen for user activity
+            document.addEventListener('mousemove', resetInactivityTimer);
+            document.addEventListener('keypress', resetInactivityTimer);
+            document.addEventListener('scroll', resetInactivityTimer);
+            
+            // Also reset timer on specific chatbot interactions
+            chatbotToggle.addEventListener('click', resetInactivityTimer);
+            chatbotClose.addEventListener('click', resetInactivityTimer);
+            chatSend.addEventListener('click', resetInactivityTimer);
+            chatInput.addEventListener('keypress', resetInactivityTimer); // For input field activity
+
+            // Initial call to start the timer when the page loads
+            resetInactivityTimer();
+        });
+    </script>
+</body>
+</html>
